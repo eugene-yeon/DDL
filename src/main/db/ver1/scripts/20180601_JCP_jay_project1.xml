@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+        http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd">
+        <changeSet id="JCP_20180601_jay_project1_0" author="jay" labels="jay">
+            <sql>
+              --
+              CREATE TABLE `test6` (
+              	`partner_id` CHAR(13)    NULL COMMENT '파트너아이디', -- 파트너아이디
+              	`create_at`  DATETIME(6) NULL DEFAULT current_timestamp(6) COMMENT '생성 일시', -- 생성 일시
+              	`status`     char(1)     NULL COMMENT '상태' -- 상태
+              )
+              COMMENT '';
+            </sql>
+            <rollback>
+              drop table test6;
+            </rollback>
+        </changeSet>
+</databaseChangeLog>
