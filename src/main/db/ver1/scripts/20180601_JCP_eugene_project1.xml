@@ -4,82 +4,33 @@
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
         http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd">
-        <changeSet id="JCP_20180601_eugene_project1_0" author="eugene" labels="eugene">
+        <changeSet id="JCP_20180601_eugene_project1_1" author="eugene" labels="eugene">
             <sql>
-              --
               CREATE TABLE `test1` (
               	`partner_id` CHAR(13)    NULL COMMENT '파트너아이디', -- 파트너아이디
               	`create_at`  DATETIME(6) NULL DEFAULT current_timestamp(6) COMMENT '생성 일시', -- 생성 일시
               	`status`     char(1)     NULL COMMENT '상태' -- 상태
               )
               COMMENT '';
-            </sql>
-            <rollback>
-              drop table `test1`;
-            </rollback>
-        </changeSet>
-        <changeSet id="JCP_20180601_eugene_project1_1" author="eugene" labels = "eugene">
-            <sql>
-              --
+              
               CREATE TABLE `test2` (
               	`partner_id` CHAR(13)    NULL COMMENT '파트너아이디', -- 파트너아이디
               	`create_at`  DATETIME(6) NULL DEFAULT current_timestamp(6) COMMENT '생성 일시', -- 생성 일시
               	`status`     char(1)     NULL COMMENT '상태' -- 상태
               )
-              COMMENT '';
+              COMMENT '';          
             </sql>
             <rollback>
-              drop table test2;
+              drop table `test1`;
+              drop table `test2`;
             </rollback>
         </changeSet>
-        <changeSet id="JCP_20180601_eugene_project1_2" author="eugene" labels="eugene">
+        <changeSet id="JCP_20180601_eugene_project1_2" author="eugene" labels="eugene" context="dev">
             <sql>
-              --
-              CREATE TABLE `test3` (
-              	`partner_id` CHAR(13)    NULL COMMENT '파트너아이디', -- 파트너아이디
-              	`create_at`  DATETIME(6) NULL DEFAULT current_timestamp(6) COMMENT '생성 일시', -- 생성 일시
-              	`status`     char(1)     NULL COMMENT '상태' -- 상태
-              )
-              COMMENT '';
+              insert into test1 (partner_id, status) values ('1', '1')
             </sql>
             <rollback>
-              drop table test3;
-            </rollback>
-        </changeSet>
-        <changeSet id="JCP_20180601_eugene_project1_3" author="eugene" labels="eugene" context="dev">
-            <sql>
-              insert into test3 (partner_id, status) values ('1', '1')
-            </sql>
-            <rollback>
-              delete from test3 where partner_id = '1'
-            </rollback>
-        </changeSet>
-        <changeSet id="JCP_20180601_eugene_project1_4" author="eugene" labels="eugene">
-            <sql>
-              --
-              CREATE TABLE `test4` (
-              	`partner_id` CHAR(13)    NULL COMMENT '파트너아이디', -- 파트너아이디
-              	`create_at`  DATETIME(6) NULL DEFAULT current_timestamp(6) COMMENT '생성 일시', -- 생성 일시
-              	`status`     char(1)     NULL COMMENT '상태' -- 상태
-              )
-              COMMENT '';
-            </sql>
-            <rollback>
-              drop table test4
-            </rollback>
-        </changeSet>
-        <changeSet id="JCP_20180601_eugene_project1_5" author="eugene" labels="eugene">
-            <sql>
-              --
-              CREATE TABLE `test5` (
-              	`partner_id` CHAR(13)    NULL COMMENT '파트너아이디', -- 파트너아이디
-              	`create_at`  DATETIME(6) NULL DEFAULT current_timestamp(6) COMMENT '생성 일시', -- 생성 일시
-              	`status`     char(1)     NULL COMMENT '상태' -- 상태
-              )
-              COMMENT '';
-            </sql>
-            <rollback>
-              drop table test5;
+              delete from test1 where partner_id = '1'
             </rollback>
         </changeSet>
 </databaseChangeLog>
