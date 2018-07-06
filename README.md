@@ -9,3 +9,7 @@ brew install gradle
 gradle task dev updateSQL;
 gradle task dev update;
 gradle task dev rollbackToDate -PliquibaseCommandValue='2018-07-05 04:43:49'
+
+
+#참고 URL
+https://dzone.com/articles/managing-your-database-with-liquibase-and-gradle
